@@ -108,7 +108,7 @@ class TaskController extends Controller
 
         try {
             $task = Task::findOrFail($id);
-            $task->update($validatedData);
+            $task->updateTask($validatedData);
 
             return response()->json(['message' => 'Task updated successfully'], 200);
         } catch (\Exception $e) {

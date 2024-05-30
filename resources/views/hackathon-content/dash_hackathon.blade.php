@@ -307,25 +307,27 @@
                                 </div>
                                 <div>
                                     <!--- | Icon Untuk Event Klik Calender | --->
-                                    <a type="button" id="delete-icon" style="display: none;">
-                                        <i class="trash alternate outline icon" style="margin-right: 2rem"></i>
+                                    <a type="button" id="delete-icon" style="display: none; margin-right: 1rem">
+                                        <i class="trash alternate outline icon" style=""></i>
                                     </a>
-                                    <a type="button" id="back-arrow-circle" onclick="backToPopupTaskEvent()">
-                                        <i class="arrow circle left icon" style="margin-right: 2rem"></i>
+                                    <a type="button" id="back-arrow-circle" style="margin-right: 1rem"
+                                        onclick="backToPopupTaskEvent()">
+                                        <i class="arrow circle left icon"></i>
                                     </a>
                                     @foreach ($tasks as $task)
                                         <a type="button" id="edit-icon" data-task-id="{{ $task->id }}"
-                                            onclick="toggleEditMode(this)" style="display:none;">
-                                            <i class="edit icon" style="margin-right: 2rem"></i>
+                                            onclick="toggleEditMode(this)" style="display:none; margin-right: 1rem">
+                                            <i class="edit icon" style=""></i>
                                         </a>
                                     @endforeach
-                                    <a type="button" id="close-icon-event" onclick="closePopupTasksEvent()"
-                                        style="display: none">
-                                        <i class="close icon" style="margin-right: 2rem"></i>
+                                    <a type="button" id="close-icon-event" style="margin-right: 1rem"
+                                        onclick="closePopupTasksEvent()" style="display: none">
+                                        <i class="close icon"></i>
                                     </a>
                                     <!--- | Icon Untuk menambahkan Task | --->
-                                    <a type="button" id="close-icon" onclick="closePopupTasks()">
-                                        <i class="close icon" style="margin-right: 2rem"></i>
+                                    <a type="button" id="close-icon" style="margin-right: 1rem"
+                                        onclick="closePopupTasks()">
+                                        <i class="close icon"></i>
                                     </a>
                                 </div>
                             </div>

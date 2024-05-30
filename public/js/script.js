@@ -1,15 +1,3 @@
-//----------- Popup Kode Group ------------//
-let popup = document.getElementById("popup");
-
-function openPopup() {
-    popup.classList.add("open-popup");
-}
-
-function closePopup() {
-    popup.classList.remove("open-popup");
-}
-
-
 
 //--------- Popup Tugas ---------//
 let popupTasks = document.getElementById("popup-tasks");
@@ -132,6 +120,7 @@ function closePopupTasksEvent() {
     // Menghilangkan display ikon
     iconDelete.style.display = 'none';
     iconEdit.style.display = 'none';
+    iconBackToPopupEvent.style.display = 'none';
     iconCloseEvent.style.display = 'none';
     iconClose.style.display = 'inline-block';
 
@@ -238,32 +227,7 @@ document.getElementById('delete-icon').addEventListener('click', function () {
 });
 
 
-//--------------------------------------- Js Code Group --------------------------- //
 
-// Ambil input kode group
-var groupInput = document.getElementById("kode_grup");
-
-// Tambahkan event listener untuk keypress
-groupInput.addEventListener("keypress", function (event) {
-    // Jika tombol yang ditekan adalah "Enter"
-    if (event.key === "Enter") {
-        // Redirect ke halaman baru hanya jika input tidak kosong
-        if (groupInput.value.trim() !== "") {
-            redirectToNewPage();
-        }
-    }
-});
-
-// Fungsi untuk mengarahkan pengguna ke halaman baru
-function redirectToNewPage() {
-    var groupCode = groupInput.value.trim(); // Ambil nilai input dan hapus spasi di awal dan akhir
-    // Jika input tidak kosong
-    if (groupCode !== "") {
-        // Bangun URL halaman baru
-        var newPageUrl = "dashboard_hackathon-1st-day1";
-        window.location.href = newPageUrl; // Arahkan ke halaman baru
-    }
-}
 
 // JavaScript
 
@@ -431,24 +395,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Calendar JS
-// $('#calendar').fullCalendar({
-//     defaultView: 'agendaFourDay',
-//     header: {
-//         left: 'prev, next',
-//         center: 'title',
-//         right: 'month, agendaFourDay',
-//     },
-//     views: {
-//       agendaFourDay: {
-//         type: 'agenda',
-//         duration: { days: 3 },
-//         buttonText: '3 days'
-//       }
-//     }
-//   });
-
-
 document.getElementById('taskForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -469,6 +415,7 @@ document.getElementById('taskForm').addEventListener('submit', function (e) {
             }
         });
 });
+
 
 document.getElementById('taskForm').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -491,6 +438,7 @@ document.getElementById('taskForm').addEventListener('submit', function (e) {
         });
 });
 
+
 document.getElementById('taskForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -511,6 +459,7 @@ document.getElementById('taskForm').addEventListener('submit', function (e) {
             }
         });
 });
+
 
 // function saveTaskChanges(event) {
 //     event.preventDefault();
@@ -584,13 +533,12 @@ function saveTaskChanges(taskId) {
         person: document.getElementById('taskPerson').value
     };
 
-    fetch(`/api/tasks/update-task/${taskId}`, {
+    fetch(`http://127.0.0.1:8000/api/tasks/update-task/${taskId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify(formData)
+        }
     })
         .then(response => {
             if (response.ok) {
@@ -607,42 +555,42 @@ function saveTaskChanges(taskId) {
         });
 }
 
-function saveTaskChanges(taskId) {
+// function saveTaskChanges(taskId) {
 
-    const formData = {
-        title: document.getElementById('taskName').value,
-        start: document.getElementById('taskStart').value,
-        end: document.getElementById('taskFinish').value,
-        detail: document.getElementById('taskDetail').value,
-        person: document.getElementById('taskPerson').value
-    };
+//     const formData = {
+//         title: document.getElementById('taskName').value,
+//         start: document.getElementById('taskStart').value,
+//         end: document.getElementById('taskFinish').value,
+//         detail: document.getElementById('taskDetail').value,
+//         person: document.getElementById('taskPerson').value
+//     };
 
-    fetch(`http://127.0.0.1:8000/api/tasks/update-task/${taskId}`, {
-        method: 'PUT',
-        headers: {
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify(formData)
-    })
-        .then(response => {
-            if (response.ok) {
-                // Tugas berhasil diperbarui
-                console.log('Perubahan pada tugas berhasil disimpan!');
-                location.reload();
-            } else {
-                // Ada kesalahan saat memperbarui tugas
-                console.error('Gagal memperbarui tugas.');
-            }
-        })
-        .catch(error => {
-            console.error('Terjadi kesalahan:', error);
-        });
-}
+//     fetch(`http://127.0.0.1:8000/api/tasks/update-task/${taskId}`, {
+//         method: 'PUT',
+//         headers: {
+//             'X-CSRF-TOKEN': '{{ csrf_token() }}'
+//         },
+//         body: JSON.stringify(formData)
+//     })
+//         .then(response => {
+//             if (response.ok) {
+//                 // Tugas berhasil diperbarui
+//                 console.log('Perubahan pada tugas berhasil disimpan!');
+//                 location.reload();
+//             } else {
+//                 // Ada kesalahan saat memperbarui tugas
+//                 console.error('Gagal memperbarui tugas.');
+//             }
+//         })
+//         .catch(error => {
+//             console.error('Terjadi kesalahan:', error);
+//         });
+// }
 
 document.getElementById('saveBtn').addEventListener('click', function (event) {
     event.preventDefault();
     const taskId = document.getElementById('taskId').value;
     if (taskId) {
-        saveTaskChanges(taskId);
+        saveTaskChanges();
     }
 });

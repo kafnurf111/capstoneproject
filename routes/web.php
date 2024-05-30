@@ -19,20 +19,6 @@ Route::get('/', function () {
     return view('hackathon-welcome/welcome');
 });
 
-// Route::get('/joinclass', function () {
-//     return view('joinclass');
-// });
-
-// Route::get('/group_hackathon', function () {
-//     return view('grouphackthon');
-// });
-
-Route::get('/welcome_hackathon', function () {
-    return view('hackathon-welcome/menu-hackathon');
-});
-
-
-
 Route::get('/dashboard_hackathon-1st-day1', [TaskController::class, 'index'])->name('dashboard_hackathon');
 
 
