@@ -20,6 +20,7 @@ let overlayTask = document.getElementsByClassName("overlay")[0];
 let iconDelete = document.getElementById("delete-icon");
 let iconEdit = document.getElementById("edit-icon");
 let iconClose = document.getElementById("close-icon");
+let iconBackToPopupEvent = document.getElementById("back-arrow-circle");
 let iconCloseEvent = document.getElementById("close-icon-event");
 
 let isEditMode = false;
@@ -85,12 +86,15 @@ function openPopupTasksEvent(event = null) {
         iconEdit.style.display = 'inline-block';
         iconCloseEvent.style.display = 'inline-block';
         iconClose.style.display = 'none';
+        iconBackToPopupEvent.style.display = 'none';
+
     } else {
         // Sembunyikan ikon hapus saat menambah tugas baru
         iconDelete.style.display = 'none';
         iconEdit.style.display = 'none';
         iconCloseEvent.style.display = 'none';
         iconClose.style.display = 'inline-block';
+        iconBackToPopupEvent.style.display = 'inline-block';
     }
     popupTasks.classList.add("open-popup-tasks");
     navbar.style.zIndex = "-1";
@@ -137,8 +141,34 @@ function closePopupTasksEvent() {
     overlayTask.style.zIndex = "";
 }
 
+function backToPopupTaskEvent() {
+    // Menampilkan elemen-elemen dalam mode non-edit
+    document.getElementById('taskNameDisplay').style.display = 'inline-block';
+    document.getElementById('taskStartDisplay').style.display = 'inline-block';
+    document.getElementById('taskFinishDisplay').style.display = 'inline-block';
+    document.getElementById('taskDetailDisplay').style.display = 'inline-block';
+    document.getElementById('taskPersonDisplay').style.display = 'inline-block';
+
+    // Menyembunyikan elemen input
+    document.getElementById('taskName').style.display = 'none';
+    document.getElementById('taskStart').style.display = 'none';
+    document.getElementById('taskFinish').style.display = 'none';
+    document.getElementById('taskDetail').style.display = 'none';
+    document.getElementById('taskPerson').style.display = 'none';
+
+    // Menampilkan atau menyembunyikan tombol sesuai mode non-edit
+    document.getElementById('submitBtn').style.display = 'none';
+    document.getElementById('saveBtn').style.display = 'none';
+    document.getElementById('finishBtn').style.display = 'inline-block';
+    iconDelete.style.display = 'inline-block';
+    Array.from(iconEdit).forEach(element => element.style.display = 'inline-block');
+    iconCloseEvent.style.display = 'inline-block';
+    iconClose.style.display = 'none';
+    iconBackToPopupEvent.style.display = 'none';
+}
+
 function toggleEditMode(enable = !isEditMode, taskId = null) {
-    isEditMode = !isEditMode;
+    isEditMode = enable;
 
     const displayStyle = isEditMode ? 'none' : 'inline-block';
     const inputStyle = isEditMode ? 'inline-block' : 'none';
@@ -159,8 +189,9 @@ function toggleEditMode(enable = !isEditMode, taskId = null) {
     // Tampilkan atau sembunyikan tombol sesuai mode edit
     document.getElementById('submitBtn').style.display = isEditMode ? 'none' : 'inline-block';
     document.getElementById('saveBtn').style.display = isEditMode ? 'inline-block' : 'none';
-    document.getElementById('finishBtn').style.display = isEditMode ? 'inline-block' : 'none';
+    document.getElementById('finishBtn').style.display = isEditMode ? 'none' : 'inline-block';
     iconDelete.style.display = isEditMode ? 'none' : 'inline-block';
+    iconBackToPopupEvent.style.display = isEditMode ? 'inline-block' : 'none';
 
     if (enable && taskId) {
         // Lakukan fetch untuk mendapatkan data tugas berdasarkan ID

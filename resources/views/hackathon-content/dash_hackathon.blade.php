@@ -310,6 +310,9 @@
                                     <a type="button" id="delete-icon" style="display: none;">
                                         <i class="trash alternate outline icon" style="margin-right: 2rem"></i>
                                     </a>
+                                    <a type="button" id="back-arrow-circle" onclick="backToPopupTaskEvent()">
+                                        <i class="arrow circle left icon" style="margin-right: 2rem"></i>
+                                    </a>
                                     @foreach ($tasks as $task)
                                         <a type="button" id="edit-icon" data-task-id="{{ $task->id }}"
                                             onclick="toggleEditMode(this)" style="display:none;">
