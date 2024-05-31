@@ -161,12 +161,15 @@
                 <a href="/dashboard_hackathon-1st-day2" style="color: black"><i class="chevron right icon"></i></a>
                 <h5 class="h5-day">Day 1</h5>
             </div>
-            <div>
+            <div style="display: flex; align-items: center;">
                 {{-- <ul>
                     @foreach ($tasks as $task)
                         <li>{{ $task->name }} - {{ $task->days_left_message }}</li>
                     @endforeach
                 </ul> --}}
+                <div class="remaining-time">
+                    <p class="set-p-days">{{ $days }} day(s) left</p>
+                </div>
                 <a type="button" style="color: black" onclick="openPopupTasks()">
                     <i class="plus circle icon"></i>
                 </a>
@@ -310,7 +313,7 @@
                                     <a type="button" id="delete-icon" style="display: none; margin-right: 1rem">
                                         <i class="trash alternate outline icon" style=""></i>
                                     </a>
-                                    <a type="button" id="back-arrow-circle" style="margin-right: 1rem"
+                                    <a type="button" id="back-arrow-circle" style="margin-right: 1rem; display: none"
                                         onclick="backToPopupTaskEvent()">
                                         <i class="arrow circle left icon"></i>
                                     </a>
@@ -320,8 +323,8 @@
                                             <i class="edit icon" style=""></i>
                                         </a>
                                     @endforeach
-                                    <a type="button" id="close-icon-event" style="margin-right: 1rem"
-                                        onclick="closePopupTasksEvent()" style="display: none">
+                                    <a type="button" id="close-icon-event" onclick="closePopupTasksEvent()"
+                                        style="display: none; margin-right: 1rem">
                                         <i class="close icon"></i>
                                     </a>
                                     <!--- | Icon Untuk menambahkan Task | --->

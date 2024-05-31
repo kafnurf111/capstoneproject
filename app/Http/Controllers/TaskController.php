@@ -12,6 +12,7 @@ class TaskController extends Controller
     {
         // Ambil semua task dari database
         $tasks = Task::all();
+        $days = $this->calculateDays();
         $currentDate = Carbon::now();
 
         // Loop melalui setiap task dan hitung hari tersisa
@@ -28,7 +29,7 @@ class TaskController extends Controller
         }
 
         // Kirim data tasks ke view
-        return view('hackathon-content/dash_hackathon', compact('tasks'));
+        return view('hackathon-content/dash_hackathon', compact('days', 'tasks'));
     }
 
 
@@ -132,5 +133,13 @@ class TaskController extends Controller
             return response()->json(['message' => 'Gagal menghapus task', 'error' => $e->getMessage()], 500);
         }
         return redirect()->route('dashboard_hackathon');
+    }
+
+    // Private Function //
+    private function calculateDays()
+    {
+        $targetDate = strtotime('2024-06-03');
+        $currentDate = time();
+        return ceil(($targetDate - $currentDate) / (60 * 60 * 24));
     }
 }

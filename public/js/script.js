@@ -591,6 +591,6 @@ document.getElementById('saveBtn').addEventListener('click', function (event) {
     event.preventDefault();
     const taskId = document.getElementById('taskId').value;
     if (taskId) {
-        saveTaskChanges();
+        saveTaskChanges(taskId);
     }
 });

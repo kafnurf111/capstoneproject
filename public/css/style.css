@@ -447,6 +447,27 @@ p.authentication {
     background-color: #fff;
 }
 
+.remaining-time {
+    margin-right: 20px;
+    display: inline-block;
+    padding: 3px 7px 3px 7px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    color: #ffd900;
+    background-color: #ff0000;
+    border-color: #ced4da;
+    margin-left: auto;
+    font-size: 15px;
+    font-weight: bold;
+}
+
 h5.h5-day {
     margin: 0;
     font-size: 1.1rem;
