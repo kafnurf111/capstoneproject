@@ -162,6 +162,9 @@
                 <h5 class="h5-day">Day 2</h5>
             </div>
             <div>
+                <div class="remaining-time">
+                    <p class="set-p-days">{{ $days }} day(s) left</p>
+                </div>
                 <a type="button" style="color: black" onclick="openPopupTasks()">
                     <i class="plus circle icon"></i>
                 </a>
@@ -176,7 +179,20 @@
             </div>
         </div>
         <div style="margin: 1rem 0 1rem 0; width: 70%; height: 38vh;">
-            <h3 class="discussions">Discussions</h3>
+            <div class="container-discussion-uploads">
+                <div class="discussion-uploads">
+                    <div class="discussion-text">
+                        <h3 class="discussions">Discussions</h3>
+                    </div>
+                    <a class="upload-task" href="#">
+                        <span>Upload Tugas</span>
+                        <div class="icons-upload">
+                            <i class="upload icon uploads-icon"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="space-discussion"></div>
             <div style=" display: flex; height: 32vh; width: 100%; flex-direction: column; overflow-y: auto;">
                 <div class="card card-body">
                     <div class="list-group list-group-flush">

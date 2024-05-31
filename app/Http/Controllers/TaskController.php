@@ -58,7 +58,9 @@ class TaskController extends Controller
     // Hackathon 1st Day 2
     public function st_hackathonDay2()
     {
-        return view('hackathon-content/1st_hackathon_day2');
+        $days = $this->calculateDays();
+
+        return view('hackathon-content/1st_hackathon_day2', compact('days'));
     }
 
     public function store2(Request $request)
@@ -79,7 +81,9 @@ class TaskController extends Controller
     // 1st Hackathon Day 3
     public function st_hackathonDay3()
     {
-        return view('hackathon-content/1st_hackathon_day3');
+        $days = $this->calculateDays();
+
+        return view('hackathon-content/1st_hackathon_day3', compact('days'));
     }
 
     public function store3(Request $request)
