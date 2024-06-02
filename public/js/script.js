@@ -11,11 +11,15 @@ let iconClose = document.getElementById("close-icon");
 let iconBackToPopupEvent = document.getElementById("back-arrow-circle");
 let iconCloseEvent = document.getElementById("close-icon-event");
 
+let popupDiscussion = document.getElementById("popup-discussion");
+let popupDiskusi = document.getElementsByClassName("popup-discussion")[0];
+
 let isEditMode = false;
 let currentTaskId = null;
 
 function openPopupTasks() {
     popupTasks.classList.add("open-popup-tasks");
+    iconClose.style.display = 'inline-block';
     navbar.style.zIndex = "-1";
     popupTask.style.zIndex = "1020";
     overlayTask.style.zIndex = "1020";
@@ -23,9 +27,11 @@ function openPopupTasks() {
 
 function closePopupTasks() {
     popupTasks.classList.remove("open-popup-tasks");
+    iconClose.style.display = 'none';
     navbar.style.zIndex = "1020";
     popupTask.style.zIndex = "";
     overlayTask.style.zIndex = "";
+
 }
 
 function openPopupTasksEvent(event = null) {
@@ -184,7 +190,7 @@ function toggleEditMode(enable = !isEditMode, taskId = null) {
 
     if (enable && taskId) {
         // Lakukan fetch untuk mendapatkan data tugas berdasarkan ID
-        fetch(`http://127.0.0.1:8000/get-task/${taskId}`)
+        fetch(`http://127.0.0.1:8000/api/tasks/${taskId}`)
             .then(response => response.json())
             .then(data => {
                 // Memasukkan data tugas ke dalam input dan textarea
@@ -529,8 +535,8 @@ function saveTaskChanges(taskId) {
         title: document.getElementById('taskName').value,
         start: document.getElementById('taskStart').value,
         end: document.getElementById('taskFinish').value,
-        detail: document.getElementById('taskDetail').value,
-        person: document.getElementById('taskPerson').value
+        person: document.getElementById('taskPerson').value,
+        detail: document.getElementById('taskDetail').value
     };
 
     fetch(`http://127.0.0.1:8000/api/tasks/update-task/${taskId}`, {
@@ -538,13 +544,13 @@ function saveTaskChanges(taskId) {
         headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        }
+        },
+        body: JSON.stringify(formData)
     })
         .then(response => {
             if (response.ok) {
                 // Refresh task details
                 fetchTaskData(taskId);
-                closeEditModal();
                 console.log('Task updated successfully!');
             } else {
                 console.error('Failed to update task.');
@@ -592,5 +598,22 @@ document.getElementById('saveBtn').addEventListener('click', function (event) {
     const taskId = document.getElementById('taskId').value;
     if (taskId) {
         saveTaskChanges(taskId);
+        location.reload();
     }
 });
+
+//-------- ---- Popup Create Discussion ----- ------------- //
+
+function openPopupDiscussion() {
+    popupDiscussion.classList.add("open-popup-discussion");
+    navbar.style.zIndex = "-1";
+    popupDiskusi.style.zIndex = "1020";
+    overlayTask.style.zIndex = "1020";
+}
+
+function closePopupDiscussion() {
+    popupDiscussion.classList.remove("open-popup-discussion");
+    navbar.style.zIndex = "1020";
+    popupDiskusi.style.zIndex = "";
+    overlayTask.style.zIndex = "";
+}

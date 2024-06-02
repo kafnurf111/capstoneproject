@@ -149,8 +149,23 @@
         </div>
     </div>
     <div class="content-discussion">
-        <div style="margin: 1rem 0 1rem 0;">
-            <h3 class="discussions">Discussions</h3>
+        <div
+            style="margin: 1rem 0 1rem 0;
+        display:flex;
+        border-bottom: 0.1rem solid;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;">
+            <div style="margin-bottom: 10px;">
+                <h3 class="discussions">Discussions</h3>
+                <span> Nama Diskusi</span>
+            </div>
+            <a class="upload-task" href="#">
+                <span>Upload Tugas</span>
+                <div class="icons-upload">
+                    <i class="upload icon uploads-icon"></i>
+                </div>
+            </a>
         </div>
         <div class="messages-container" id="messages-container">
             <div class="message-list" id="message-list">

@@ -390,6 +390,12 @@ p.authentication {
     color: rgb(247, 0, 255);
 }
 
+.form-select {
+    width: 37%;
+    height: 30px;
+    padding: 5px 8px 5px 8px;
+    font-size: 12.8px;
+}
 
 .text--input {
     display: flex;
@@ -448,7 +454,7 @@ p.authentication {
 }
 
 .remaining-time {
-    margin-right: 20px;
+    margin-bottom: 5px;
     display: inline-block;
     padding: 3px 7px 3px 7px;
     font-weight: 400;
@@ -503,6 +509,17 @@ h5.h5-day {
   }
 
   .tasks {
+    top: 16%;
+    display: flex;
+    position: absolute;
+    left: 27%;
+    background-color: white; /* Atur sesuai kebutuhan */
+    z-index: 1020; /* Lebih tinggi dari overlay */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  .discussion {
     top: 16%;
     display: flex;
     position: absolute;
@@ -575,6 +592,16 @@ h5.h5-day {
     margin-left: 2rem;
   }
 
+  .class-title-list-discussion {
+    width: 6rem;
+    background-color: #FBB041;
+    color: #fff;
+    font-weight: bold;
+    padding: .1rem 0 .1rem 0.5rem;
+    border-radius: 1rem;
+    margin-left: 2rem;
+  }
+
   .label {
     width: 110px; /* Atur lebar label sesuai kebutuhan */
     display: inline-block;
@@ -599,7 +626,7 @@ h5.h5-day {
 }
 
 .label-tugas {
-  width: 110px; /* Atur lebar label sesuai kebutuhan */
+  width: 110px;
   display: inline-block;
 }
 
@@ -608,8 +635,29 @@ h5.h5-day {
     margin-left: 5px;
 }
 
+/* Popup Css Discussion*/
+.label-topik {
+    width: 110px;
+    display: inline-block;
+  }
+
+.label-topik::after {
+    content: ":";
+    margin-left: 10px;
+}
+
+.label-deskripsi::after {
+    content: ":";
+    margin-left: 24px;
+}
+
   
   .title-list {
+    color: #000;
+    padding: .5rem 0 .5rem 0;
+  }
+  
+  .title-list-discussion {
     color: #000;
     padding: .5rem 0 .5rem 0;
   }
@@ -625,7 +673,12 @@ h5.h5-day {
     justify-content: center;
     margin: .5rem 0 0 0;
   }
-
+  
+  div.btn-create-list {
+    display: flex;
+    justify-content: center;
+    margin: .5rem 0 0 0;
+  }
 
 button.ui.primary.button.btn-submit {
     padding-left: 2rem;
@@ -679,6 +732,16 @@ button.ui.primary.button.btn-finish {
     visibility: hidden;
 }
 
+.popup-discussion {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, .8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
 
 .overlay {
     position: absolute;
@@ -689,6 +752,11 @@ button.ui.primary.button.btn-finish {
 }
 
 .open-popup-tasks {
+    opacity: 1;
+    visibility: visible;
+}
+
+.open-popup-discussion {
     opacity: 1;
     visibility: visible;
 }
@@ -783,7 +851,7 @@ a.upload-task:hover {
 .upload-task {
     display: flex;
     align-items: center;
-    margin-left: 2rem;
+    margin-right: 2rem;
     color: #fff;
     padding: 2px 5px 2px 5px;
     background-color: #1533B5;

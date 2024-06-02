@@ -152,16 +152,21 @@
         <div
             style="display: flex;
             justify-content: space-between;
+            align-items: center;
             flex-direction: row;
             width: 100%;
             font-size: 1.3rem;">
-            <div style="display: flex;
+            <div style="display: flex; align-items: center;
                 font-size: 1.3rem;">
                 <a href="/dashboard_hackathon-1st-day3" style="color: black"><i class="chevron left icon"></i></a>
                 <a href="/dashboard_hackathon-1st-day2" style="color: black"><i class="chevron right icon"></i></a>
                 <h5 class="h5-day">Day 1</h5>
+                <a type="button" style="color: black; margin-left: 20px; font-size: 15px;" onclick="openPopupTasks()">
+                    <i class="plus circle icon"></i>
+                    <span style="font-size: 15px">Add Task</span>
+                </a>
             </div>
-            <div style="display: flex; align-items: center;">
+            <div style="display: flex; flex-direction: column; align-items: center;">
                 {{-- <ul>
                     @foreach ($tasks as $task)
                         <li>{{ $task->name }} - {{ $task->days_left_message }}</li>
@@ -170,9 +175,6 @@
                 <div class="remaining-time">
                     <p class="set-p-days">{{ $days }} day(s) left</p>
                 </div>
-                <a type="button" style="color: black" onclick="openPopupTasks()">
-                    <i class="plus circle icon"></i>
-                </a>
             </div>
         </div>
 
@@ -190,11 +192,10 @@
                     <div class="discussion-text">
                         <h3 class="discussions">Discussions</h3>
                     </div>
-                    <a class="upload-task" href="#">
-                        <span>Upload Tugas</span>
-                        <div class="icons-upload">
-                            <i class="upload icon uploads-icon"></i>
-                        </div>
+                    <a type="button" style="color: black; margin-left: 20px; font-size: 15px;"
+                        onclick="openPopupDiscussion()">
+                        <i class="plus circle icon"></i>
+                        <span style="font-size: 15px">Add Discussion</span>
                     </a>
                 </div>
             </div>
@@ -294,6 +295,49 @@
         </div>
     </div>
 
+    <!-- Popup Menambahkan Discussion -->
+    <div class="popup-discussion" id="popup-discussion">
+        <div class="overlay" id="overlay" onclick="closePopupDiscussion()"></div>
+        <div class="discussion" id="discussion">
+            <div class="card card-member-list">
+                <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-around;">
+                    <form class="taskForm" action="" method="">
+                        @csrf
+                        <div class="list-group list-group-flush">
+                            <div class="titlelist-icon">
+                                <div class="class-title-list-discussion">
+                                    <h5 class="title-list-discussion" id="popupdiscussionTitle">Discussion</h5>
+                                </div>
+                                <div>
+                                    <!--- | Icon Untuk menambahkan Task | --->
+                                    <a type="button" id="close-icon-discussion" style="margin-right: 1rem"
+                                        onclick="closePopupDiscussion()">
+                                        <i class="close icon"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="div-listgroup">
+                                <li class="list-group-item">
+                                    <span class="label-topik">Nama Topik</span>
+                                    <input class="input-list task-input" type="text" name="nama_topik"
+                                        id="nama_topik">
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="label label-deskripsi">Deskripsi</span>
+                                    <input class="input-list task-input" type="text" name="deskripsi" id="deskripsi">
+                                </li>
+                            </div>
+                        </div>
+                        <div class="btn-create-list">
+                            <button class=" ui primary button btn-create" id="createBtn">Buat</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    \
     <!-- Popup Menambahkan Task -->
     <div class="popup-tasks" id="popup-tasks">
         <div class="overlay" id="overlay" onclick="closePopupTasks()"></div>
@@ -319,15 +363,15 @@
                                     </a>
                                     @foreach ($tasks as $task)
                                         <a type="button" id="edit-icon" data-task-id="{{ $task->id }}"
-                                            onclick="toggleEditMode(this)" style="display:none; margin-right: 1rem">
+                                            onclick="toggleEditMode()" style="display:none; margin-right: 1rem">
                                             <i class="edit icon" style=""></i>
                                         </a>
                                     @endforeach
+
                                     <a type="button" id="close-icon-event" onclick="closePopupTasksEvent()"
                                         style="display: none; margin-right: 1rem">
                                         <i class="close icon"></i>
                                     </a>
-                                    <!--- | Icon Untuk menambahkan Task | --->
                                     <a type="button" id="close-icon" style="margin-right: 1rem"
                                         onclick="closePopupTasks()">
                                         <i class="close icon"></i>
@@ -353,15 +397,18 @@
                                         id="taskFinish">
                                 </li>
                                 <li class="list-group-item">
+                                    <span class="label label-person">Person</span>
+                                    <span class="task-display" id="taskPersonDisplay" style="display: none"></span>
+                                    <select class="form-select input-list task-input" name="person"
+                                        aria-label="Default select example">
+                                        <option selected>Select Person :</option>
+                                        <option value="1">One</option>
+                                    </select>
+                                </li>
+                                <li class="list-group-item">
                                     <span class="label label-detail">Detail</span>
                                     <span class="task-display" id="taskDetailDisplay" style="display: none"></span>
                                     <input class="input-list task-input" type="text" name="detail" id="taskDetail">
-                                </li>
-                                <li class="list-group-item">
-                                    <span class="label label-person">Person</span>
-                                    <span class="task-display" id="taskPersonDisplay" style="display: none"></span>
-                                    <textarea class="task-input" style="resize:none; max-height: 4dvh;" name="person" id="taskPerson" cols="30"
-                                        rows="10"></textarea>
                                 </li>
                             </div>
                         </div>

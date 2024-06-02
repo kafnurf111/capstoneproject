@@ -40,12 +40,12 @@ document.addEventListener('DOMContentLoaded', async function () {
                 title: event.name,
                 start: event.start,
                 end: event.finish,
-                // detail: event.detail,
-                // person: event.person,
-                extendedProps: {
-                    detail: event.detail,
-                    person: event.person,
-                },
+                detail: event.detail,
+                person: event.person,
+                // extendedProps: {
+                //     detail: event.detail,
+                //     person: event.person,
+                // },
                 color: event.color,
                 textColor: 'black'
             }));

@@ -15,12 +15,12 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('color')->default('#FFA500');
+            $table->string('name');
             $table->dateTime('start');
             $table->dateTime('finish');
-            $table->text('detail')->nullable();
             $table->string('person');
+            $table->text('detail')->nullable();
             $table->timestamps();
         });
     }

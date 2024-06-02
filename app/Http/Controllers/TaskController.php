@@ -41,8 +41,8 @@ class TaskController extends Controller
         $task->color = '#FFA500';
         $task->start = $request->start;
         $task->finish = $request->finish;
-        $task->detail = $request->detail;
         $task->person = $request->person;
+        $task->detail = $request->detail;
         $task->save();
 
         return redirect()->route('dashboard_hackathon');
@@ -101,24 +101,25 @@ class TaskController extends Controller
         return redirect()->route('1st_hackathon_day3');
     }
 
-    public function updateTask(Request $request, $id)
+    public function getData($id)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'start' => 'required|date',
-            'finish' => 'required|date',
-            'detail' => 'nullable|string',
-            'person' => 'required|string|max:255',
-        ]);
 
+        $task = Task::find($id);
+    }
+
+    public function updateTask($id)
+    {
         try {
-            $task = Task::findOrFail($id);
-            $task->updateTask($validatedData);
 
-            return response()->json(['message' => 'Task updated successfully'], 200);
+            $task = Task::find($id);
+
+            $task->update();
+
+            return response()->json(['message' => 'Task Berhasil di Update'], 200);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Failed to update task', 'error' => $e->getMessage()], 500);
+            return response()->json(['message' => 'Gagal Update Task', 'error' => $e->getMessage()], 500);
         }
+        return redirect()->route('dashboard_hackathon');
     }
 
     public function deleteTask($id)
