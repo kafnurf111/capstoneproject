@@ -31,7 +31,7 @@
                 </a>
             </li>
 
-            <a href="#" class="a-btn-hackathon align-items-center collapsed py-2 active" data-bs-toggle="collapse"
+            <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_1st_day_2-collapse" aria-expanded="true">
                 <div class="align-items-center my-3">
                     <div class="col pd-right-col">
@@ -47,7 +47,7 @@
                 </div>
             </a>
             <li class="li-hackathon-day1 collapse my-3" id="hackathon_1st_day_2-collapse">
-                <a href="/dashboard_hackathon-1st-day2" class="a-hackathon-meeting active">
+                <a href="/dashboard_hackathon-1st-day2" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
                         <h6 class="">Tugas Bukti Record Meeting Kelompok</h6>
@@ -70,7 +70,7 @@
                 </div>
             </a>
             <li class="li-hackathon-day1 collapse my-3" id="hackathon_1st_day_3-collapse">
-                <a href="/dashboard_hackathon-1st-day3" class="a-hackathon-meeting">
+                <a href="#" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
                         <h6 class="">Tugas Bukti Record Meeting Kelompok</h6>
@@ -79,7 +79,7 @@
             </li>
 
             <!--- | Day 42-44 ~ 2nd Hackathon Day 1-3 | --->
-            <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
+            <a href="#" class="a-btn-hackathon align-items-center collapsed py-2 active" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_2nd_day_1-collapse" aria-expanded="true">
                 <div class="align-items-center my-3">
                     <div class="col pd-right-col">
@@ -95,7 +95,7 @@
                 </div>
             </a>
             <li class="li-hackathon-day1 collapse my-3" id="hackathon_2nd_day_1-collapse">
-                <a href="/dashboard_hackathon-2nd-day1" class="a-hackathon-meeting">
+                <a href="/dashboard_hackathon-2nd-day1" class="a-hackathon-meeting active">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
                         <h6 class="">Tugas Bukti Record Meeting Kelompok</h6>
@@ -152,43 +152,45 @@
         </div>
     </div>
     <div class="content-hackathon"
-        style="background-image: url(img/bg-content.png);
-    background-repeat: no-repeat;
-    background-position-x: 65rem;
-    background-position-y: -2rem;
-    background-size: 20%;">
+        style="background-image: url(img/bg-content.png); background-repeat: no-repeat; background-position-x: 65rem; background-position-y: -2rem; background-size: 20%;">
         <div
             style="display: flex;
             justify-content: space-between;
-            flex-direction: row;
             align-items: center;
+            flex-direction: row;
             width: 100%;
             font-size: 1.3rem;">
-            <div style="display: flex;
+            <div style="display: flex; align-items: center;
                 font-size: 1.3rem;">
-                <a href="/dashboard_hackathon-1st-day1" style="color: black"><i class="chevron left icon"></i></a>
-                <a href="/dashboard_hackathon-1st-day3" style="color: black"><i class="chevron right icon"></i></a>
-                <h5 class="h5-day">(1st) --> Day 2</h5>
+                <a href="/dashboard_hackathon-2nd-day3" style="color: black"><i class="chevron left icon"></i></a>
+                <a href="/dashboard_hackathon-2nd-day2" style="color: black"><i class="chevron right icon"></i></a>
+                <h5 class="h5-day">(2nd) --> Day 1</h5>
                 <a type="button" style="color: black; margin-left: 20px; font-size: 15px;" onclick="openPopupTasks()">
                     <i class="plus circle icon"></i>
                     <span style="font-size: 15px">Add Task</span>
                 </a>
             </div>
-            <div>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                {{-- <ul>
+                    @foreach ($tasks as $task)
+                        <li>{{ $task->name }} - {{ $task->days_left_message }}</li>
+                    @endforeach
+                </ul> --}}
                 <div class="remaining-time">
-                    <p class="set-p-days">{{ $days }} day(s) left</p>
+                    <p class="set-p-days">{{ $days }} Days left</p>
                 </div>
             </div>
         </div>
+
         <div class="content-calender">
             <div class="google-calender">
                 <script src="js/fetchData.js"></script>
-                <div id="calendar">
+                <div id='calendar'></div>
 
-                </div>
             </div>
         </div>
-        <div style="margin: 1rem 0 1rem 0; width: 70%; height: 38vh;">
+
+        <div style=" margin: 1rem 0 1rem 0; width: 70%; height: 38vh;">
             <div class="container-discussion-uploads">
                 <div class="discussion-uploads">
                     <div class="discussion-text">
@@ -205,8 +207,8 @@
             <div style=" display: flex; height: 32vh; width: 100%; flex-direction: column; overflow-y: auto;">
                 <div class="card card-body">
                     <div class="list-group list-group-flush">
-                        <a href="#" class="discussion-group-item discussion-group-item-action"
-                            data-toggle="collapse">
+                        <a href="/dashboard_hackathon-discussions"
+                            class="discussion-group-item discussion-group-item-action" data-toggle="collapse">
                             <span class="title">Initial Meeting</span>
                         </a>
                         <a href="#" class="discussion-group-item discussion-group-item-action replies"
@@ -315,13 +317,13 @@
         </div>
     </div>
 
-
+    <!-- Popup Menambahkan Task -->
     <div class="popup-tasks" id="popup-tasks">
         <div class="overlay" id="overlay" onclick="closePopupTasks()"></div>
         <div class="tasks" id="tasks">
             <div class="card card-member-list">
                 <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-around;">
-                    <form class="taskForm" action="{{ route('tasks.store2') }}" method="POST">
+                    <form class="taskForm" action="{{ route('tasks.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="task_id" id="taskId">
                         <div class="list-group list-group-flush">
@@ -390,6 +392,32 @@
                                             </div>
                                         @endforeach
                                     </div>
+
+
+                                    {{-- <select class="form-select input-list task-input" name="person[]" id="taskPerson"
+                                        aria-label="Default select example">
+                                        <option>Select Person :</option>
+                                        @foreach ($members as $member)
+                                            <option value="{{ $member->name }}">{{ $member->name }}</option>
+                                        @endforeach
+                                    </select> --}}
+
+                                    {{-- <div
+                                        style="display: flex; flex-direction: column; overflow-y: auto; height: 75px;
+                                        width: 175px;
+                                        background-color: aliceblue;
+                                        padding: 5px;">
+                                        @foreach ($members as $member)
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    value="{{ $member->name }}" id="member{{ $member->id }}"
+                                                    name="person">
+                                                <label class="form-check-label" for="member{{ $member->id }}">
+                                                    {{ $member->name }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div> --}}
                                 </li>
                                 <li class="list-group-item">
                                     <label class="label label-detail">Detail</label>

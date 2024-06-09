@@ -2,11 +2,14 @@
 
 @section('main-contents')
     <div class="sidebars d-flex flex-row ">
-        <div class="containers-sidebar flex-column">
+        <div class="containers-sidebar flex-column"
+            style="background-image: url(img/bg-side.png);
+        background-repeat: no-repeat;
+        background-position: center;">
             <!--- | Day 21-23 ~ 1st Hackathon Day 1-3 | --->
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2 active" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_1st_day_1-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="w-100">
@@ -19,7 +22,7 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_1st_day_1-collapse">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_1st_day_1-collapse">
                 <a href="/dashboard_hackathon-1st-day1" class="a-hackathon-meeting active">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
@@ -30,7 +33,7 @@
 
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_1st_day_2-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div class="w-100">
@@ -43,7 +46,7 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_1st_day_2-collapse">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_1st_day_2-collapse">
                 <a href="/dashboard_hackathon-1st-day2" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
@@ -53,7 +56,7 @@
             </li>
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_1st_day_3-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div class="w-100">
@@ -66,7 +69,7 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_1st_day_3-collapse">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_1st_day_3-collapse">
                 <a href="#" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
@@ -78,7 +81,7 @@
             <!--- | Day 42-44 ~ 2nd Hackathon Day 1-3 | --->
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_2nd_day_1-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="w-100">
@@ -91,7 +94,7 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_2nd_day_1-collapse">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_2nd_day_1-collapse">
                 <a href="#" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
@@ -102,7 +105,7 @@
 
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_2nd_day_2-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div class="w-100">
@@ -115,7 +118,7 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_2nd_day_2-collapse">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_2nd_day_2-collapse">
                 <a href="#" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
@@ -125,7 +128,7 @@
             </li>
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_2nd_day_3-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div class="w-100">
@@ -138,7 +141,7 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_2nd_day_3-collapse">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_2nd_day_3-collapse">
                 <a href="#" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
@@ -148,7 +151,11 @@
             </li>
         </div>
     </div>
-    <div class="content-discussion">
+    <div class="content-discussion"
+        style="
+    background-image: url(img/logoOnlyMaxy.png);
+    background-position: center;
+    background-repeat: no-repeat;">
         <div
             style="margin: 1rem 0 1rem 0;
         display:flex;
@@ -160,12 +167,17 @@
                 <h3 class="discussions">Discussions</h3>
                 <span> Nama Diskusi</span>
             </div>
-            <a class="upload-task" href="#">
-                <span>Upload Tugas</span>
-                <div class="icons-upload">
-                    <i class="upload icon uploads-icon"></i>
-                </div>
-            </a>
+            <div class="d-flex">
+                <a class="upload-task" href="#">
+                    <span>Upload Tugas</span>
+                    <div class="icons-upload">
+                        <i class="upload icon uploads-icon"></i>
+                    </div>
+                </a>
+                <a type="button" id="close-icon" style="margin-right: 1rem">
+                    <i class="close icon"></i>
+                </a>
+            </div>
         </div>
         <div class="messages-container" id="messages-container">
             <div class="message-list" id="message-list">

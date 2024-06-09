@@ -14,17 +14,22 @@ class CreateTasksTable extends Migration
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
+            $table->id('task_id');
             $table->string('color')->default('#FFA500');
             $table->string('name');
             $table->dateTime('start');
             $table->dateTime('finish');
-            $table->string('person');
+            $table->json('person')->nullable();
             $table->text('detail')->nullable();
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('tasks');

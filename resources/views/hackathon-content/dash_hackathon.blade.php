@@ -2,11 +2,14 @@
 
 @section('main-contents')
     <div class="sidebars d-flex flex-row ">
-        <div class="containers-sidebar flex-column">
+        <div class="containers-sidebar flex-column"
+            style="background-image: url(img/bg-side.png);
+        background-repeat: no-repeat;
+        background-position: center;">
             <!--- | Day 21-23 ~ 1st Hackathon Day 1-3 | --->
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2 active" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_1st_day_1-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="w-100">
@@ -19,7 +22,7 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_1st_day_1-collapse">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_1st_day_1-collapse">
                 <a href="/dashboard_hackathon-1st-day1" class="a-hackathon-meeting active">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
@@ -30,7 +33,7 @@
 
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_1st_day_2-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div class="w-100">
@@ -43,7 +46,7 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_1st_day_2-collapse">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_1st_day_2-collapse">
                 <a href="/dashboard_hackathon-1st-day2" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
@@ -53,7 +56,7 @@
             </li>
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_1st_day_3-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div class="w-100">
@@ -66,7 +69,7 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_1st_day_3-collapse">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_1st_day_3-collapse">
                 <a href="#" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
@@ -78,7 +81,7 @@
             <!--- | Day 42-44 ~ 2nd Hackathon Day 1-3 | --->
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_2nd_day_1-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="w-100">
@@ -91,8 +94,8 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_2nd_day_1-collapse">
-                <a href="#" class="a-hackathon-meeting">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_2nd_day_1-collapse">
+                <a href="/dashboard_hackathon-2nd-day1" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
                         <h6 class="">Tugas Bukti Record Meeting Kelompok</h6>
@@ -102,7 +105,7 @@
 
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_2nd_day_2-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div class="w-100">
@@ -115,8 +118,8 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_2nd_day_2-collapse">
-                <a href="#" class="a-hackathon-meeting">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_2nd_day_2-collapse">
+                <a href="/dashboard_hackathon-2nd-day2" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
                         <h6 class="">Tugas Bukti Record Meeting Kelompok</h6>
@@ -125,7 +128,7 @@
             </li>
             <a href="#" class="a-btn-hackathon align-items-center collapsed py-2" data-bs-toggle="collapse"
                 data-bs-target="#hackathon_2nd_day_3-collapse" aria-expanded="true">
-                <div class="align-items-center">
+                <div class="align-items-center my-3">
                     <div class="col pd-right-col">
                         <div class="d-flex justify-content-between align-items-center w-100">
                             <div class="w-100">
@@ -138,8 +141,8 @@
                     </div>
                 </div>
             </a>
-            <li class="li-hackathon-day1 collapse" id="hackathon_2nd_day_3-collapse">
-                <a href="#" class="a-hackathon-meeting">
+            <li class="li-hackathon-day1 collapse my-3" id="hackathon_2nd_day_3-collapse">
+                <a href="/dashboard_hackathon-2nd-day3" class="a-hackathon-meeting">
                     <div class="icon-earmark"><i class="bi bi-file-earmark-text"></i></div>
                     <div class="text-earmark">
                         <h6 class="">Tugas Bukti Record Meeting Kelompok</h6>
@@ -148,7 +151,8 @@
             </li>
         </div>
     </div>
-    <div class="content-hackathon">
+    <div class="content-hackathon"
+        style="background-image: url(img/bg-content.png); background-repeat: no-repeat; background-position-x: 65rem; background-position-y: -2rem; background-size: 20%;">
         <div
             style="display: flex;
             justify-content: space-between;
@@ -160,7 +164,7 @@
                 font-size: 1.3rem;">
                 <a href="/dashboard_hackathon-1st-day3" style="color: black"><i class="chevron left icon"></i></a>
                 <a href="/dashboard_hackathon-1st-day2" style="color: black"><i class="chevron right icon"></i></a>
-                <h5 class="h5-day">Day 1</h5>
+                <h5 class="h5-day">(1st) --> Day 1</h5>
                 <a type="button" style="color: black; margin-left: 20px; font-size: 15px;" onclick="openPopupTasks()">
                     <i class="plus circle icon"></i>
                     <span style="font-size: 15px">Add Task</span>
@@ -173,7 +177,7 @@
                     @endforeach
                 </ul> --}}
                 <div class="remaining-time">
-                    <p class="set-p-days">{{ $days }} day(s) left</p>
+                    <p class="set-p-days">{{ $days }} Days left</p>
                 </div>
             </div>
         </div>
@@ -259,36 +263,12 @@
                 </div>
                 <div class="member-list" id="MemberList" style="display: flex; max-height: 107px; overflow-y:auto">
                     <!-- Gambar profil anggota -->
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/elliot.jpg" alt="Profil Anggota 1">
-                    </div>
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/matt.jpg" alt="Profil Anggota 2">
-                    </div>
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/stevie.jpg" alt="Profil Anggota 3">
-                    </div>
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/elliot.jpg" alt="Profil Anggota 4">
-                    </div>
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/matt.jpg" alt="Profil Anggota 5">
-                    </div>
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/stevie.jpg" alt="Profil Anggota 6">
-                    </div>
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/elliot.jpg" alt="Profil Anggota 7">
-                    </div>
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/matt.jpg" alt="Profil Anggota 8">
-                    </div>
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/stevie.jpg" alt="Profil Anggota 9">
-                    </div>
-                    <div class="member-profile" style="margin-right: .5rem;">
-                        <img src="img/elliot.jpg" alt="Profil Anggota 10">
-                    </div>
+                    @foreach ($members as $member)
+                        <div class="member-profile" style="margin-right: .5rem;">
+                            <img src="{{ $member->profile_picture }}" alt="Profil {{ $member->name }}">
+                            <span class="member-name" style="display: none">{{ $member->name }}</span>
+                        </div>
+                    @endforeach
                     <!-- Tambahkan gambar profil lainnya sesuai kebutuhan -->
                 </div>
             </div>
@@ -337,7 +317,6 @@
         </div>
     </div>
 
-    \
     <!-- Popup Menambahkan Task -->
     <div class="popup-tasks" id="popup-tasks">
         <div class="overlay" id="overlay" onclick="closePopupTasks()"></div>
@@ -346,7 +325,7 @@
                 <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-around;">
                     <form class="taskForm" action="{{ route('tasks.store') }}" method="POST">
                         @csrf
-                        <input type="hidden" name="id" id="taskId">
+                        <input type="hidden" name="task_id" id="taskId">
                         <div class="list-group list-group-flush">
                             <div class="titlelist-icon">
                                 <div class="class-title-list">
@@ -355,7 +334,7 @@
                                 <div>
                                     <!--- | Icon Untuk Event Klik Calender | --->
                                     <a type="button" id="delete-icon" style="display: none; margin-right: 1rem">
-                                        <i class="trash alternate outline icon" style=""></i>
+                                        <i class="trash alternate outline icon"></i>
                                     </a>
                                     <a type="button" id="back-arrow-circle" style="margin-right: 1rem; display: none"
                                         onclick="backToPopupTaskEvent()">
@@ -363,7 +342,7 @@
                                     </a>
                                     @foreach ($tasks as $task)
                                         <a type="button" id="edit-icon" data-task-id="{{ $task->id }}"
-                                            onclick="toggleEditMode()" style="display:none; margin-right: 1rem">
+                                            onclick="toggleEditMode(this)" style="display:none; margin-right: 1rem">
                                             <i class="edit icon" style=""></i>
                                         </a>
                                     @endforeach
@@ -380,33 +359,68 @@
                             </div>
                             <div class="div-listgroup">
                                 <li class="list-group-item">
-                                    <span class="label-tugas">Nama Tugas</span>
+                                    <label class="label-tugas">Nama Tugas</label>
                                     <span class="task-display" id="taskNameDisplay" style="display: none"></span>
                                     <input class="input-list task-input" type="text" name="name" id="taskName">
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="label label-start">Start</span>
+                                    <label class="label label-start">Start</label>
                                     <span class="task-display" id="taskStartDisplay" style="display: none"></span>
                                     <input class="input-list task-input" type="datetime-local" name="start"
                                         id="taskStart">
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="label label-finish">Finish</span>
+                                    <label class="label label-finish">Finish</label>
                                     <span class="task-display" id="taskFinishDisplay" style="display: none"></span>
                                     <input class="input-list task-input" type="datetime-local" name="finish"
                                         id="taskFinish">
                                 </li>
+
                                 <li class="list-group-item">
-                                    <span class="label label-person">Person</span>
+                                    <label class="label label-person">Person</label>
                                     <span class="task-display" id="taskPersonDisplay" style="display: none"></span>
-                                    <select class="form-select input-list task-input" name="person"
+
+                                    <div id="div-taskPerson"
+                                        style="display: flex; flex-direction: column; overflow-y: auto; height: 75px; width: 175px; background-color: aliceblue; padding: 5px;">
+                                        @foreach ($members as $member)
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    value="{{ $member->name }}" id="taskPerson" name="person[]">
+                                                <label class="form-check-label" for="member{{ $member->id }}">
+                                                    {{ $member->name }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+
+                                    {{-- <select class="form-select input-list task-input" name="person[]" id="taskPerson"
                                         aria-label="Default select example">
-                                        <option selected>Select Person :</option>
-                                        <option value="1">One</option>
-                                    </select>
+                                        <option>Select Person :</option>
+                                        @foreach ($members as $member)
+                                            <option value="{{ $member->name }}">{{ $member->name }}</option>
+                                        @endforeach
+                                    </select> --}}
+
+                                    {{-- <div
+                                        style="display: flex; flex-direction: column; overflow-y: auto; height: 75px;
+                                        width: 175px;
+                                        background-color: aliceblue;
+                                        padding: 5px;">
+                                        @foreach ($members as $member)
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    value="{{ $member->name }}" id="member{{ $member->id }}"
+                                                    name="person">
+                                                <label class="form-check-label" for="member{{ $member->id }}">
+                                                    {{ $member->name }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div> --}}
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="label label-detail">Detail</span>
+                                    <label class="label label-detail">Detail</label>
                                     <span class="task-display" id="taskDetailDisplay" style="display: none"></span>
                                     <input class="input-list task-input" type="text" name="detail" id="taskDetail">
                                 </li>

@@ -28,40 +28,32 @@ function openPopupTasks() {
 function closePopupTasks() {
     popupTasks.classList.remove("open-popup-tasks");
     iconClose.style.display = 'none';
+    document.getElementById('finishBtn').style.display = 'inline-block';
     navbar.style.zIndex = "1020";
     popupTask.style.zIndex = "";
     overlayTask.style.zIndex = "";
 
 }
 
-function openPopupTasksEvent(event = null) {
+function openPopupTasksEvent(taskId = null) {
     // Reset form
     document.querySelector('.taskForm').reset();
-    isEditMode = false;
-    toggleEditMode(false);
 
-    if (event) {
+    if (taskId) {
         // Menampilkan display pada span atau text
         document.getElementById('taskNameDisplay').style.display = 'inline-block';
         document.getElementById('taskStartDisplay').style.display = 'inline-block';
         document.getElementById('taskFinishDisplay').style.display = 'inline-block';
-        document.getElementById('taskDetailDisplay').style.display = 'inline-block';
         document.getElementById('taskPersonDisplay').style.display = 'inline-block';
+        document.getElementById('taskDetailDisplay').style.display = 'inline-block';
 
         // Menampilkan data dalam bentuk text
-        document.getElementById('taskId').innerText = event.id || '';
-        document.getElementById('taskNameDisplay').innerText = event.title || '';
-        document.getElementById('taskStartDisplay').innerText = event.start ? event.start.toISOString().slice(0, 10) + "  " + event.start.toISOString().slice(11, 16) : '';
-        document.getElementById('taskFinishDisplay').innerText = event.end ? event.end.toISOString().slice(0, 10) + " " + event.end.toISOString().slice(11, 16) : '';
-        document.getElementById('taskDetailDisplay').innerText = event.extendedProps.detail || '';
-        document.getElementById('taskPersonDisplay').innerText = event.extendedProps.person || '';
-
-        document.getElementById('taskId').value = event.id || '';
-        document.getElementById('taskName').value = event.title || '';
-        document.getElementById('taskStart').value = event.start ? event.start.toISOString().slice(0, 16) : '';
-        document.getElementById('taskFinish').value = event.end ? event.end.toISOString().slice(0, 16) : '';
-        document.getElementById('taskDetail').value = event.extendedProps.detail || '';
-        document.getElementById('taskPerson').value = event.extendedProps.person || '';
+        document.getElementById('taskId').innerText = taskId.id || '';
+        document.getElementById('taskNameDisplay').innerText = taskId.title || '';
+        document.getElementById('taskStartDisplay').innerText = taskId.start ? taskId.start.toISOString().slice(0, 10) + "  " + taskId.start.toISOString().slice(11, 16) : '';
+        document.getElementById('taskFinishDisplay').innerText = taskId.end ? taskId.end.toISOString().slice(0, 10) + " " + taskId.end.toISOString().slice(11, 16) : '';
+        document.getElementById('taskPersonDisplay').innerText = taskId.extendedProps.person || '';
+        document.getElementById('taskDetailDisplay').innerText = taskId.extendedProps.detail || '';
 
         // Menghilangkan Display pada input dan textarea
         document.getElementById('taskName').style.display = 'none';
@@ -69,10 +61,22 @@ function openPopupTasksEvent(event = null) {
         document.getElementById('taskFinish').style.display = 'none';
         document.getElementById('taskDetail').style.display = 'none';
         document.getElementById('taskPerson').style.display = 'none';
+        document.getElementById('div-taskPerson').style.display = 'none';
+
+        document.getElementById('taskId').value = taskId.id || '';
+        document.getElementById('taskName').value = taskId.title || '';
+        document.getElementById('taskStart').value = taskId.start ? taskId.start.toISOString().slice(0, 16) : '';
+        document.getElementById('taskFinish').value = taskId.end ? taskId.end.toISOString().slice(0, 16) : '';
+        // Mengatur checkbox
+        const person = taskId.extendedProps.person ? taskId.extendedProps.person.split(', ') : [];
+        document.querySelectorAll('input[name="person[]"]').forEach(checkbox => {
+            checkbox.checked = person.includes(checkbox.value);
+        });
+        document.getElementById('taskDetail').value = taskId.extendedProps.detail || '';
 
 
-        document.getElementById('submitBtn').style.display = isEditMode ? 'inline-block' : 'none';
-        document.getElementById('finishBtn').style.display = isEditMode ? 'none' : 'inline-block';
+        document.getElementById('submitBtn').style.display = 'none';
+        document.getElementById('finishBtn').style.display = 'inline-block';
 
 
         // Menampilkan ikon hapus
@@ -96,6 +100,72 @@ function openPopupTasksEvent(event = null) {
     overlayTask.style.zIndex = "1020";
 }
 
+
+// function openPopupTasksEvent(event = null) {
+//     // Reset form
+//     document.querySelector('.taskForm').reset();
+//     isEditMode = false;
+//     toggleEditMode(false);
+
+//     if (event) {
+//         // Menampilkan display pada span atau text
+//         document.getElementById('taskNameDisplay').style.display = 'inline-block';
+//         document.getElementById('taskStartDisplay').style.display = 'inline-block';
+//         document.getElementById('taskFinishDisplay').style.display = 'inline-block';
+//         document.getElementById('taskDetailDisplay').style.display = 'inline-block';
+//         document.getElementById('taskPersonDisplay').style.display = 'inline-block';
+
+//         // Menampilkan data dalam bentuk text
+//         document.getElementById('taskId').innerText = event.id || '';
+//         document.getElementById('taskNameDisplay').innerText = event.title || '';
+//         document.getElementById('taskStartDisplay').innerText = event.start ? event.start.toISOString().slice(0, 10) + "  " + event.start.toISOString().slice(11, 16) : '';
+//         document.getElementById('taskFinishDisplay').innerText = event.end ? event.end.toISOString().slice(0, 10) + " " + event.end.toISOString().slice(11, 16) : '';
+//         document.getElementById('taskDetailDisplay').innerText = event.extendedProps.detail || '';
+//         document.getElementById('taskPersonDisplay').innerText = event.extendedProps.person || '';
+
+//         document.getElementById('taskId').value = event.id || '';
+//         document.getElementById('taskName').value = event.title || '';
+//         document.getElementById('taskStart').value = event.start ? event.start.toISOString().slice(0, 16) : '';
+//         document.getElementById('taskFinish').value = event.end ? event.end.toISOString().slice(0, 16) : '';
+//         document.getElementById('taskDetail').value = event.extendedProps.detail || '';
+//         // Set checkbox values
+//         const person = event.extendedProps.person ? event.extendedProps.person.split(', ') : [];
+//         document.querySelectorAll('input[name="person[]"]').forEach(checkbox => {
+//             checkbox.checked = person.includes(checkbox.value);
+//         });
+
+//         // Menghilangkan Display pada input dan textarea
+//         document.getElementById('taskName').style.display = 'none';
+//         document.getElementById('taskStart').style.display = 'none';
+//         document.getElementById('taskFinish').style.display = 'none';
+//         document.getElementById('taskDetail').style.display = 'none';
+//         document.getElementById('div-taskPerson').style.display = 'none';
+
+//         document.getElementById('submitBtn').style.display = isEditMode ? 'inline-block' : 'none';
+//         document.getElementById('finishBtn').style.display = isEditMode ? 'none' : 'inline-block';
+
+
+//         // Menampilkan ikon hapus
+//         iconDelete.style.display = 'inline-block';
+//         iconEdit.style.display = 'inline-block';
+//         iconCloseEvent.style.display = 'inline-block';
+//         iconClose.style.display = 'none';
+//         iconBackToPopupEvent.style.display = 'none';
+
+//     } else {
+//         // Sembunyikan ikon hapus saat menambah tugas baru
+//         iconDelete.style.display = 'none';
+//         iconEdit.style.display = 'none';
+//         iconCloseEvent.style.display = 'none';
+//         iconClose.style.display = 'inline-block';
+//         iconBackToPopupEvent.style.display = 'inline-block';
+//     }
+//     popupTasks.classList.add("open-popup-tasks");
+//     navbar.style.zIndex = "-1";
+//     popupTask.style.zIndex = "1020";
+//     overlayTask.style.zIndex = "1020";
+// }
+
 function closePopupTasksEvent() {
     // Menghilangkan display pada span atau text
     document.getElementById('taskNameDisplay').style.display = 'none';
@@ -109,11 +179,13 @@ function closePopupTasksEvent() {
     document.querySelector('input[name="start"]').style.display = 'inline-block';
     document.querySelector('input[name="finish"]').style.display = 'inline-block';
     document.querySelector('input[name="detail"]').style.display = 'inline-block';
-    document.querySelector('textarea[name="person"]').style.display = 'inline-block';
+    document.querySelector('input[name="person[]"]').style.display = 'inline-block';
+    document.getElementById('div-taskPerson').style.display = 'inline-block';
 
 
-    document.getElementById('submitBtn').style.display = isEditMode ? 'none' : 'inline-block';
-    document.getElementById('finishBtn').style.display = isEditMode ? 'inline-block' : 'none';
+
+    document.getElementById('submitBtn').style.display = isEditMode ? 'inline-block' : 'none';
+    document.getElementById('finishBtn').style.display = isEditMode ? 'none' : 'inline-block';
 
     document.getElementById('taskId').value = '';
     document.getElementById('taskName').value = '';
@@ -150,19 +222,19 @@ function backToPopupTaskEvent() {
     document.getElementById('taskFinish').style.display = 'none';
     document.getElementById('taskDetail').style.display = 'none';
     document.getElementById('taskPerson').style.display = 'none';
+    document.getElementById('div-taskPerson').style.display = 'none';
 
     // Menampilkan atau menyembunyikan tombol sesuai mode non-edit
     document.getElementById('submitBtn').style.display = 'none';
     document.getElementById('saveBtn').style.display = 'none';
     document.getElementById('finishBtn').style.display = 'inline-block';
     iconDelete.style.display = 'inline-block';
-    Array.from(iconEdit).forEach(element => element.style.display = 'inline-block');
     iconCloseEvent.style.display = 'inline-block';
     iconClose.style.display = 'none';
     iconBackToPopupEvent.style.display = 'none';
 }
 
-function toggleEditMode(enable = !isEditMode, taskId = null) {
+function toggleEditMode(enable = !isEditMode) {
     isEditMode = enable;
 
     const displayStyle = isEditMode ? 'none' : 'inline-block';
@@ -181,29 +253,14 @@ function toggleEditMode(enable = !isEditMode, taskId = null) {
     document.getElementById('taskDetail').style.display = inputStyle;
     document.getElementById('taskPerson').style.display = inputStyle;
 
+    document.getElementById('div-taskPerson').style.display = inputStyle;
+
     // Tampilkan atau sembunyikan tombol sesuai mode edit
     document.getElementById('submitBtn').style.display = isEditMode ? 'none' : 'inline-block';
     document.getElementById('saveBtn').style.display = isEditMode ? 'inline-block' : 'none';
     document.getElementById('finishBtn').style.display = isEditMode ? 'none' : 'inline-block';
     iconDelete.style.display = isEditMode ? 'none' : 'inline-block';
     iconBackToPopupEvent.style.display = isEditMode ? 'inline-block' : 'none';
-
-    if (enable && taskId) {
-        // Lakukan fetch untuk mendapatkan data tugas berdasarkan ID
-        fetch(`http://127.0.0.1:8000/api/tasks/${taskId}`)
-            .then(response => response.json())
-            .then(data => {
-                // Memasukkan data tugas ke dalam input dan textarea
-                document.getElementById('taskName').value = data.title || '';
-                document.getElementById('taskStart').value = data.start || '';
-                document.getElementById('taskFinish').value = data.end || '';
-                document.getElementById('taskDetail').value = data.detail || '';
-                document.getElementById('taskPerson').value = data.person || '';
-            })
-            .catch(error => {
-                console.error('Gagal mendapatkan data tugas:', error);
-            });
-    }
 }
 
 function deleteTask(taskId) {
@@ -237,65 +294,46 @@ document.getElementById('delete-icon').addEventListener('click', function () {
 
 // JavaScript
 
-document.getElementById('toggleMember').addEventListener('click', function () {
+$(document).ready(function () {
     var memberList = document.getElementById('MemberList');
     var memberNames = memberList.getElementsByClassName('member-name');
 
-    var namaAnggota = ["Akbar Firmansyah", "Fredrinnn", "Alice Sulastri", "Charlot Geogry", "David Beckham"];
+    // Ketika tombol "Lihat Semua" diklik
+    $('#toggleMember').click(function () {
 
-    // Apakah nama anggota sudah ditambahkan sebelumnya
-    var namesAdded = memberNames.length > 0;
+        // Toggle nama anggota
+        $('.member-name').toggle();
 
-    // Tambahkan properti CSS flexDirection dan justifyContent saat tombol "Lihat Semua" diklik
-    if (!namesAdded) {
-        memberList.style.flexDirection = 'column';
-        memberList.style.justifyContent = 'flex-start';
+        // Ubah teks tombol menjadi "Sembunyikan" atau "Lihat Semua"
 
-        // Tambahkan nama anggota jika belum ditambahkan sebelumnya
-        var memberProfiles = memberList.getElementsByClassName('member-profile');
-        for (var i = 0; i < memberProfiles.length; i++) {
-            var memberProfile = memberProfiles[i];
-            var memberName = document.createElement('span');
-            memberName.className = 'member-name';
+        if ($(this).text() === 'Lihat Semua') {
+            $(this).text('Sembunyikan');
+            $('.member-list').css('flex-direction', 'column');
 
-            // Menentukan nama anggota berdasarkan indeks i
-            if (i < namaAnggota.length) {
-                memberName.textContent = namaAnggota[i];
-            } else {
-                memberName.textContent = 'Nama Anggota ' + (i + 1);
-            }
+            $('.member-profile').css('margin-bottom', '0.7rem');
+            $('.member-profile').css('display', 'flex');
+            $('.member-profile').css('align-items', 'center');
+            $('.member-profile').css('flex-direction', 'row');
 
-            // Menambahkan nama anggota ke dalam div member-profile
-            memberProfile.appendChild(memberName);
+            $('.member-name').css('margin-left', '10px');
+        } else {
+            $(this).text('Lihat Semua');
+            // Jika tombol menjadi "Sembunyikan", hapus style pada class member-list
+            $('.member-list').css('flex-direction', '');
 
-            // Menambahkan gaya CSS untuk menyesuaikan nama anggota dalam bentuk kolom
-            memberList.style.display = 'flex';
+            $('.member-profile').css('margin-bottom', '');
+            $('.member-profile').css('display', '');
+            $('.member-profile').css('align-items', '');
+            $('.member-profile').css('flex-direction', '');
 
-
-            memberProfile.style.display = 'flex';
-            memberProfile.style.paddingBottom = '1rem';
-            memberProfile.style.alignItems = 'center';
-
-            // Menambahkan gaya CSS untuk menempatkan nama anggota di sebelah kanan profil
-            memberName.style.marginLeft = '1rem';
-        }
-    }
-
-    // Hapus nama anggota jika sudah ditambahkan sebelumnya
-    if (namesAdded) {
-        while (memberNames.length > 0) {
-            memberNames[0].remove();
+            $('.member-profile').css('margin-left', '');
         }
 
-        // Hapus properti CSS flexDirection dan justifyContent saat tombol "Sembunyikan" diklik
-        memberList.style.removeProperty('flex-direction');
-        memberList.style.removeProperty('justify-content');
-    }
 
-
-    // Mengubah teks tombol menjadi "Sembunyikan" atau "Lihat Semua"
-    this.textContent = (namesAdded) ? 'Lihat Semua' : 'Lihat Sedikit';
+        $(this).text(buttonText);
+    });
 });
+
 
 
 
@@ -319,86 +357,86 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Discussion JS
-document.addEventListener('DOMContentLoaded', () => {
-    const messageForm = document.getElementById('message-form');
-    const messageInput = document.getElementById('message-input');
-    const messageList = document.getElementById('message-list');
+// document.addEventListener('DOMContentLoaded', () => {
+//     const messageForm = document.getElementById('message-form');
+//     const messageInput = document.getElementById('message-input');
+//     const messageList = document.getElementById('message-list');
 
-    // Handle form submission
-    messageForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent form from submitting normally
+//     // Handle form submission
+//     messageForm.addEventListener('submit', function (event) {
+//         event.preventDefault(); // Prevent form from submitting normally
 
-        const messageText = messageInput.value.trim();
+//         const messageText = messageInput.value.trim();
 
-        if (messageText === '') {
-            return; // Do not send empty messages
-        }
+//         if (messageText === '') {
+//             return; // Do not send empty messages
+//         }
 
-        // Create message element
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message');
-        messageElement.innerHTML = `
-            <div class="message-content">
-                <p>${messageText}</p>
-            </div>
-            <div class="message-reply">
-                <button class="btn-reply">Reply</button>
-            </div>
-        `;
+//         // Create message element
+//         const messageElement = document.createElement('div');
+//         messageElement.classList.add('message');
+//         messageElement.innerHTML = `
+//             <div class="message-content">
+//                 <p>${messageText}</p>
+//             </div>
+//             <div class="message-reply">
+//                 <button class="btn-reply">Reply</button>
+//             </div>
+//         `;
 
-        // Append message to message list
-        messageList.appendChild(messageElement);
+//         // Append message to message list
+//         messageList.appendChild(messageElement);
 
-        // Clear input
-        messageInput.value = '';
+//         // Clear input
+//         messageInput.value = '';
 
-        // Scroll to the latest message
-        messageList.scrollTop = messageList.scrollHeight;
+//         // Scroll to the latest message
+//         messageList.scrollTop = messageList.scrollHeight;
 
-        // Handle reply button click
-        const replyButton = messageElement.querySelector('.btn-reply');
-        replyButton.addEventListener('click', function () {
-            const replyInput = document.createElement('textarea');
-            replyInput.classList.add('form-control', 'reply-input');
-            replyInput.rows = 2;
-            replyInput.placeholder = 'Write your reply...';
+//         // Handle reply button click
+//         const replyButton = messageElement.querySelector('.btn-reply');
+//         replyButton.addEventListener('click', function () {
+//             const replyInput = document.createElement('textarea');
+//             replyInput.classList.add('form-control', 'reply-input');
+//             replyInput.rows = 2;
+//             replyInput.placeholder = 'Write your reply...';
 
-            const replySendButton = document.createElement('button');
-            replySendButton.classList.add('ui', 'primary', 'button', 'btn-send-reply');
-            replySendButton.textContent = 'Send';
+//             const replySendButton = document.createElement('button');
+//             replySendButton.classList.add('ui', 'primary', 'button', 'btn-send-reply');
+//             replySendButton.textContent = 'Send';
 
-            const replyForm = document.createElement('div');
-            replyForm.classList.add('reply-form');
-            replyForm.appendChild(replyInput);
-            replyForm.appendChild(replySendButton);
+//             const replyForm = document.createElement('div');
+//             replyForm.classList.add('reply-form');
+//             replyForm.appendChild(replyInput);
+//             replyForm.appendChild(replySendButton);
 
-            messageElement.appendChild(replyForm);
+//             messageElement.appendChild(replyForm);
 
-            replySendButton.addEventListener('click', function () {
-                const replyText = replyInput.value.trim();
+//             replySendButton.addEventListener('click', function () {
+//                 const replyText = replyInput.value.trim();
 
-                if (replyText === '') {
-                    return; // Do not send empty replies
-                }
+//                 if (replyText === '') {
+//                     return; // Do not send empty replies
+//                 }
 
-                // Create reply element
-                const replyElement = document.createElement('div');
-                replyElement.classList.add('reply');
-                replyElement.innerHTML = `
-                <div class="reply-content">
-                <p>${replyText}</p>
-                </div>
-                `;
+//                 // Create reply element
+//                 const replyElement = document.createElement('div');
+//                 replyElement.classList.add('reply');
+//                 replyElement.innerHTML = `
+//                 <div class="reply-content">
+//                 <p>${replyText}</p>
+//                 </div>
+//                 `;
 
-                // Append reply to message element
-                messageElement.insertBefore(replyElement, replyForm);
+//                 // Append reply to message element
+//                 messageElement.insertBefore(replyElement, replyForm);
 
-                // Remove reply form after sending
-                messageElement.removeChild(replyForm);
-            });
-        });
-    });
-});
+//                 // Remove reply form after sending
+//                 messageElement.removeChild(replyForm);
+//             });
+//         });
+//     });
+// });
 
 
 document.getElementById('taskForm').addEventListener('submit', function (e) {
@@ -417,7 +455,6 @@ document.getElementById('taskForm').addEventListener('submit', function (e) {
         .then(data => {
             if (data.message === 'Task created successfully') {
                 closePopupTasks();
-                fetchTasks();
             }
         });
 });
@@ -439,7 +476,6 @@ document.getElementById('taskForm').addEventListener('submit', function (e) {
         .then(data => {
             if (data.message === 'Task created successfully') {
                 closePopupTasks();
-                fetchTasks();
             }
         });
 });
@@ -465,54 +501,6 @@ document.getElementById('taskForm').addEventListener('submit', function (e) {
             }
         });
 });
-
-
-// function saveTaskChanges(event) {
-//     event.preventDefault();
-
-//     const taskId = document.getElementById('taskId').value;
-//     const taskName = document.getElementById('taskName').value;
-//     const taskStart = document.getElementById('taskStart').value;
-//     const taskFinish = document.getElementById('taskFinish').value;
-//     const taskDetail = document.getElementById('taskDetail').value;
-//     const taskPerson = document.getElementById('taskPerson').value;
-
-//     const formData = {
-//         name: taskName,
-//         start: taskStart,
-//         finish: taskFinish,
-//         detail: taskDetail,
-//         person: taskPerson
-//     };
-
-//     const method = taskId ? 'PUT' : 'POST';
-//     const url = taskId ? `{{ route('tasks.update', ['id' => '']) }}${taskId}` : `{{ route('tasks.store') }}`;
-
-//     fetch(url, {
-//         method: method,
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'X-CSRF-TOKEN': '{{ csrf_token() }}'
-//         },
-//         body: JSON.stringify(formData)
-//     })
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok ' + response.statusText);
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             if (data.message === 'Task updated successfully' || data.message === 'Task created successfully') {
-//                 location.reload();
-//             } else {
-//                 console.error('Failed to update task:', data);
-//             }
-//         })
-//         .catch(error => {
-//             console.error('An error occurred:', error);
-//         });
-// }
 
 
 // Function to fetch task data from server
@@ -561,37 +549,6 @@ function saveTaskChanges(taskId) {
         });
 }
 
-// function saveTaskChanges(taskId) {
-
-//     const formData = {
-//         title: document.getElementById('taskName').value,
-//         start: document.getElementById('taskStart').value,
-//         end: document.getElementById('taskFinish').value,
-//         detail: document.getElementById('taskDetail').value,
-//         person: document.getElementById('taskPerson').value
-//     };
-
-//     fetch(`http://127.0.0.1:8000/api/tasks/update-task/${taskId}`, {
-//         method: 'PUT',
-//         headers: {
-//             'X-CSRF-TOKEN': '{{ csrf_token() }}'
-//         },
-//         body: JSON.stringify(formData)
-//     })
-//         .then(response => {
-//             if (response.ok) {
-//                 // Tugas berhasil diperbarui
-//                 console.log('Perubahan pada tugas berhasil disimpan!');
-//                 location.reload();
-//             } else {
-//                 // Ada kesalahan saat memperbarui tugas
-//                 console.error('Gagal memperbarui tugas.');
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Terjadi kesalahan:', error);
-//         });
-// }
 
 document.getElementById('saveBtn').addEventListener('click', function (event) {
     event.preventDefault();
@@ -616,4 +573,31 @@ function closePopupDiscussion() {
     navbar.style.zIndex = "1020";
     popupDiskusi.style.zIndex = "";
     overlayTask.style.zIndex = "";
+}
+
+function sendMessage() {
+    const chatBody = document.getElementById('chatBody');
+    const chatInput = document.getElementById('chatInput');
+
+    const message = chatInput.value.trim();
+
+    if (message) {
+        fetch('/send-message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ message })
+        })
+            .then(response => response.json())
+            .then(data => {
+                const messageElement = document.createElement('p');
+                messageElement.textContent = data.message;
+                chatBody.appendChild(messageElement);
+                chatInput.value = '';
+                chatBody.scrollTop = chatBody.scrollHeight;
+            })
+            .catch(error => console.error('Error:', error));
+    }
 }

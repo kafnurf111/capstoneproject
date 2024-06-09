@@ -175,7 +175,6 @@
     }
 
     .containers-sidebar {
-        display: flex;
         background-color: #fff;
         width: 25%;
         overflow-y: auto;
@@ -732,6 +731,17 @@ button.ui.primary.button.btn-finish {
     visibility: hidden;
 }
 
+.popup-tasks-event {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0, 0, 0, .8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
 .popup-discussion {
     width: 100%;
     height: 100vh;
@@ -752,6 +762,11 @@ button.ui.primary.button.btn-finish {
 }
 
 .open-popup-tasks {
+    opacity: 1;
+    visibility: visible;
+}
+
+.open-popup-tasks-event {
     opacity: 1;
     visibility: visible;
 }
@@ -840,7 +855,6 @@ button.ui.primary.button.btn-finish {
     left: 20.2rem;
     top: 4.32rem;
     padding: 1.5rem;
-    background-color: #fff;
 }
 
 a.upload-task:hover {

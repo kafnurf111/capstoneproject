@@ -20,8 +20,8 @@ class CreateUserGroupsTable extends Migration
             $table->timestamps();
 
             // Menambahkan foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->foreign('group_id')->references('groups_id')->on('groups')->onDelete('cascade');
         });
     }
 

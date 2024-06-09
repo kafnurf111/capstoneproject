@@ -14,13 +14,12 @@ class CreateDiscussionsTable extends Migration
     public function up()
     {
         Schema::create('discussions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('topic', 255)->nullable();
+            $table->id('discussion_id');
+            $table->string('topic');
             $table->unsignedBigInteger('group_id');
-
             $table->timestamps();
 
-            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
+            $table->foreign('group_id')->references('groups_id')->on('groups')->onDelete('cascade');
         });
     }
 
